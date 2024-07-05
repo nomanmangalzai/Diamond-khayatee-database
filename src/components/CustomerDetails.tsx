@@ -1,153 +1,255 @@
-// import { useFormik } from "formik";
-// import * as Yup from "yup";
-// import { Container, Row, Col, Form, Button } from "react-bootstrap";
-// import "../css files/Home.css"; // Import the CSS file
+import { useState } from 'react';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import '../App.css'; // Import your CSS file
 
-// const validationSchema = Yup.object({
-//   nameOfCustomer: Yup.string().required("Name is required"),
-//   Id: Yup.number().required("Id is required"),
-//   telephoneNo: Yup.string().required("Telephone Number is required"),
-//   fatherName: Yup.string().required("Father name is required"),
-//   qad: Yup.number().required("Qad is required"),
-//   asteen: Yup.number().required("Asteen is required"),
-//   shana: Yup.number().required("Shana is required"),
-//   yakhan: Yup.number().required("Yakhan is required"),
-//   chatee: Yup.number().required("Chatee is required"),
-//   baghal: Yup.number().required("Baghal is required"),
-// });
-
-// const HelloWorld = () => {
-//   const formik = useFormik({
-//     initialValues: {
-//       nameOfCustomer: "",
-//       Id: "",
-//       telephoneNo: "",
-//       fatherName: "",
-//       qad: "",
-//       asteen: "",
-//       shana: "",
-//       yakhan: "",
-//       chatee: "",
-//       baghal: "",
-//     },
-//     validationSchema: validationSchema,
-//     onSubmit: async (values) => {
-//       try {
-//         const response = await fetch(
-//           "http://localhost:5003/customers/details",
-//           {
-//             method: "POST",
-//             headers: {
-//               "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify(values),
-//           }
-//         );
-
-//         if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//         }
-
-//         const data = await response.json();
-//         console.log("Server response:", data);
-//       } catch (error) {
-//         console.error("Error:", error.message);
-//       }
-//     },
-//   });
-
-//   return (
-//     <Container className="h-screen d-flex justify-content-center align-items-center">
-//       <Form
-//         className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md w-96"
-//         onSubmit={formik.handleSubmit}
-//       >
-//         <Row>
-//           <Col>
-//             <Form.Group className="mb-4">
-//               <Form.Label htmlFor="nameOfCustomer">اسم</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 id="nameOfCustomer"
-//                 {...formik.getFieldProps("nameOfCustomer")}
-//               />
-//               {formik.touched.nameOfCustomer && formik.errors.nameOfCustomer ? (
-//                 <Form.Text className="text-xs italic text-red-500">
-//                   {formik.errors.nameOfCustomer}
-//                 </Form.Text>
-//               ) : null}
-//             </Form.Group>
-
-//             <Form.Group className="mb-6">
-//               <Form.Label htmlFor="telephoneNo">شماره تیلیفون</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 id="telephoneNo"
-//                 {...formik.getFieldProps("telephoneNo")}
-//               />
-//               {formik.touched.telephoneNo && formik.errors.telephoneNo ? (
-//                 <Form.Text className="text-xs italic text-red-500">
-//                   {formik.errors.telephoneNo}
-//                 </Form.Text>
-//               ) : null}
-//             </Form.Group>
-
-//             <Form.Group className="mb-4">
-//               <Form.Label htmlFor="fatherName">ولد</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 id="fatherName"
-//                 {...formik.getFieldProps("fatherName")}
-//               />
-//               {formik.touched.fatherName && formik.errors.fatherName ? (
-//                 <Form.Text className="text-xs italic text-red-500">
-//                   {formik.errors.fatherName}
-//                 </Form.Text>
-//               ) : null}
-//             </Form.Group>
-
-//             <Form.Group className="mb-6">
-//               <Form.Label htmlFor="Id">ایډې</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 id="Id"
-//                 {...formik.getFieldProps("Id")}
-//               />
-//               {formik.touched.Id && formik.errors.Id ? (
-//                 <Form.Text className="text-xs italic text-red-500">
-//                   {formik.errors.Id}
-//                 </Form.Text>
-//               ) : null}
-//             </Form.Group>
-
-//             {/* Add more input fields as needed */}
-//           </Col>
-//           <Col>{/* Add input fields for the second section */}</Col>
-//           <Col>{/* Add input fields for the third section */}</Col>
-//         </Row>
-//         <div className="flex items-center justify-between">
-//           <Button
-//             type="submit"
-//             className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-//           >
-//             Submit
-//           </Button>
-//         </div>
-//       </Form>
-//     </Container>
-//   );
-// };
-
-// export default HelloWorld;
-
-import React from "react";
-
-// A simple functional component that renders "Hello, World!"
 const HelloWorld = () => {
+  // State variables for input fields
+  const [name, setName] = useState('');
+  const [type, setType] = useState('');
+  const [field1, setField1] = useState('');
+  const [field2, setField2] = useState('');
+  const [field3, setField3] = useState('');
+  const [field4, setField4] = useState('');
+  const [field5, setField5] = useState('');
+  const [field6, setField6] = useState('');
+  const [field7, setField7] = useState('');
+  const [field8, setField8] = useState('');
+  const [field9, setField9] = useState('');
+  const [field10, setField10] = useState('');
+  const [field11, setField11] = useState('');
+  const [field12, setField12] = useState('');
+  const [field13, setField13] = useState('');
+  
+
+  // Handler for form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+    console.log('Form submitted with values:', { name, type, field1, field2, field3, field4, field5, field6 });
+
+    // Reset input fields after submission
+    setName('');
+    setType('');
+    setField1('');
+    setField2('');
+    setField3('');
+    setField4('');
+    setField5('');
+    setField6('');
+    setField7('');
+    setField8('');
+    setField9('');
+    setField10('');
+    setField11('');
+    setField12('');
+    setField13('');
+
+  };
+
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <Container className="parent-container">
+      <h1 style={{ fontSize: "32px" }} className="font-weight-bold text-primary text-center mb-5">
+        ناف مشتری
+      </h1>
+      <Row className="h-50">
+        <Col className='rounded-top' style={{ backgroundColor: 'blue', height: '400px', }}>
+        <Form style={{ padding: '20px', }} onSubmit={handleSubmit}>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField8">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="تنبان" 
+                    value={field8} 
+                    onChange={(e) => setField8(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+        <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField9">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="قد" 
+                    value={field9} 
+                    onChange={(e) => setField9(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField10">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="پاچه" 
+                    value={field10} 
+                    onChange={(e) => setField10(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField11">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="موده" 
+                    value={field11} 
+                    onChange={(e) => setField11(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField12">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="بر تنبان" 
+                    value={field12} 
+                    onChange={(e) => setField12(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField13">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="کف" 
+                    value={field13} 
+                    onChange={(e) => setField13(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            </Form>
+     </Col>
+     {/* COlUMN 2 BEGINS HERE ***************************************************************************************************** */}
+        <Col className='rounded-top' style={{ backgroundColor: 'yellow', height: '400px' }}>    
+          <Form style={{ padding: '20px' }} onSubmit={handleSubmit}>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField1">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="قد" 
+                    value={field1} 
+                    onChange={(e) => setField1(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField2">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="استین" 
+                    value={field2} 
+                    onChange={(e) => setField2(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField3">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="شانه" 
+                    value={field3} 
+                    onChange={(e) => setField3(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField4">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="یخن" 
+                    value={field4} 
+                    onChange={(e) => setField4(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField5">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="چاتی" 
+                    value={field5} 
+                    onChange={(e) => setField5(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField6">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="بغل" 
+                    value={field6} 
+                    onChange={(e) => setField6(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="formField7">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="دامن" 
+                    value={field7} 
+                    onChange={(e) => setField7(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+          </Form>
+        </Col>
+        <Col className='rounded-top' style={{ backgroundColor: 'green', height: '400px' }}>
+        <Form style={{ padding: '20px' }}>         
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="name">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="نام مشتری" 
+                    value={name} 
+                    onChange={(e) => setName(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="align-items-center mb-3">
+              <Col>
+                <Form.Group controlId="type">
+                  <Form.Control 
+                    type="text" 
+                    placeholder="نوع فرمایش" 
+                    value={type} 
+                    onChange={(e) => setType(e.target.value)} 
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
