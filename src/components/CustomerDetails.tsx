@@ -22,29 +22,36 @@ const HelloWorld = () => {
 
   // Handler for form submission
   const handleSubmit = async (event) => {
-    console.log("handleSubmit integration called")
     event.preventDefault();
-    // Handle form submission logic here
+  console.log('NAME = '+name)
+    // Validation example: Check for required fields
+    if (!name || !type) {
+      console.error('Name and Type are required fields.');
+      return; // Exit the function if validation fails
+    }
+  
+    console.log("Sending data to backend");
     console.log('Form submitted with values:', { name, type, field1, field2, field3, field4, field5, field6, field7, field8, field9, field10, field11, field12, field13 });
-
-    // Send data to backend
+  
     try {
-      const response = await fetch('YOUR_BACKEND_URL', {
+      const response = await fetch('http://localhost:5000/naaf/save-naaf', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, type, field1, field2, field3, field4, field5, field6, field7, field8, field9, field10, field11, field12, field13 }),
       });
+  
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+    
       const result = await response.json();
       console.log('Data sent to backend:', result);
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
-
+  
     // Reset input fields after submission
     setName('');
     setType('');
@@ -62,6 +69,7 @@ const HelloWorld = () => {
     setField12('');
     setField13('');
   };
+  
 
   // Handler for key down event
   const handleKeyDown = (e, nextFieldId) => {
